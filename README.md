@@ -1,6 +1,14 @@
 # kindle-web-tools
 Turn Kindle Paperwhite e-reader into a development and production tool.
 
+## Quick start for basic use
+1. Copy `javascript.html` to your Kindle (not in subfolder for starters)
+2. Open **Experimental Browser** (Three-vertical-dots menu > Experimental Browser).
+3. In the address bar, type `file:///mnt/us/javascript.html?alert('Hi\x20there!')` (if you switch the Kindle off before closing the message, it will stay on screen! You can use it to leave messages.)
+  - or type `file:///mnt/us/javascript.html?25*4+1` for a calculator
+  - or type `file:///mnt/us/javascript.html?Date()` for a clock
+4. bookmark it, type code, get a blank screen (that is proabbly a parse error), get frustrated, find solutions, enjoy, share
+
 ## Kindle Paperwhite <img alt="Kindle Paperwhite 3 from Wikipedia https://en.wikipedia.org/wiki/User:Frmorrison" src="https://upload.wikimedia.org/wikipedia/en/e/e9/Paperwhite_3.jpg" width="50"> 
  _Amazon Kindle Paperwhite_ is a standalone portable computer that provides:
  * a great B/W touchscreen,
@@ -54,7 +62,7 @@ becomes
 
 
 ## Cool features
-* **Screenshot**: press top-left and bottom-right corner at the same time. The screen flickers and stores the picture in the [root directory](#vocabulary)
+* **Screenshot**: press top-left and bottom-right corner at the same time. The screen flickers and stores the picture in the [root directory](#vocabulary) as `screenshot_2020_09_16T22_02_03+0800.png` with the structure `screenshot_yyyy_mm_ddTHH_MM_SS+ZZZZ.png` year, month, day, hour, minute, second, timeZone.
 * A URL can be at least 2 million characters long (reached with an incremental JS approach but the device get slow)
   - Unfortunately it cannot be bookmarked. There seems to be a hard limit of overall size of the bookmarks higher than 33,000 characters.
 * `~ds` **Screen always on** (will drain the battery!).
@@ -67,7 +75,8 @@ becomes
 * [external link](https://wiki.mobileread.com/wiki/Kindle_Touch_Hacking#Search_Bar_Shortcuts) to more search bar codes
 
 ## Weird stuff
-* My screenshots were timestamped with `+0759` timezone (and I kept wondering why the clock on my Kindle is always a minute behind) until I fixed it by setting the time manually again. **For JavaScript, the Kindle's timezone is always UTC.** It means that inside JS, you can never deduce in which timezone you are! The offset is determined when the user sets the time and it seems only a hidden setting. (It would be possible to get the offset from screenshots though - as we can work with iframes, load a content of file:///mnt/us and parse it, find filenames matching the screenshot pattern and _voilà_.)
+* My screenshots were timestamped with `+0759` timezone (and I kept wondering why the clock on my Kindle is always a minute behind) until I fixed it by setting the time manually again. **For JavaScript, the Kindle's timezone is almost always UTC.** It means that inside JS, you can never deduce in which timezone you are! The offset is determined when the user sets the time and it seems only a hidden setting. (It would be possible to get the offset from screenshots though - as we can work with iframes, load a content of file:///mnt/us and parse it, find filenames matching the screenshot pattern and _voilà_.)
+* `Date()` shows the correct date with the right timezone offset however, using `new Date()` ruins it. To reset, Home button and starting Web browser does the trick and `Date()` works again. WEIRD
 * I found no way to turn the backlight _completely_ off.
 
 
