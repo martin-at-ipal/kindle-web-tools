@@ -7,6 +7,7 @@ Turn Kindle Paperwhite e-reader into a development and production tool.
 3. In the address bar, type `file:///mnt/us/javascript.html?alert('Hi\x20there!')` (if you switch the Kindle off before closing the message, it will stay on screen! You can use it to leave messages.)
   - or type `file:///mnt/us/javascript.html?25*4+1` for a calculator
   - or type `file:///mnt/us/javascript.html?Date()` for a clock
+  - or type the content of [dev.txt](dev.txt) for an IDE with its own code being open in the text editing window
 4. bookmark it, type code, get a blank screen (that is proabbly a parse error), get frustrated, find solutions, enjoy, share
 
 ## Kindle Paperwhite <img alt="Kindle Paperwhite 3 from Wikipedia https://en.wikipedia.org/wiki/User:Frmorrison" src="https://upload.wikimedia.org/wikipedia/en/e/e9/Paperwhite_3.jpg" width="50"> 
