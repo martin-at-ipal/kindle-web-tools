@@ -84,3 +84,19 @@ becomes
 
 ## Vocabulary
 root directory: the place that shows up on your regular compuer when you plug your Kindle in.
+
+## How to get your code out of a Kindle?
+If you don't want to use Tesseract on your screenshots to get your source code in a pull request, here is another way:
+1. Find out IP address of the computer where you want to get the code to:
+`ifconfig | grep "inet "` on Unix-like systems or `ipconfig` in Windows which is usually of the form `192.168.xx.xx` or `10.xx.xx.xx`. In my example, it shows `192.168.1.100`
+
+2. Install [Node.js](https://nodejs.org/en/) and run the following command line (on MacOS _Terminal.app_, on Windows _PowerShell_, _Command Prompt_ ( `cmd`), or _Cygwin_, on Linux any console/terminal)
+```BASH
+
+node -e "require('http').createServer((req, res) => {console.log(req.url.substr(1));res.statusCode=200;res.end()}).listen(3000)"
+```
+  *  It runs a server on your machine that listens on port 3000 for incomming connections and writes the URL they were requesting in the standard output.
+3. Connect your Kindle on your Wi-Fi (same as your computer)
+4. Navigate to your excellent script file://mnt/us/javascript.html?try{this-is-a-very-long-code-that-would-take-ages-to-transcribe}catch(e){alert(e)}
+5. In the beginning of the URL, type `http://192.168.1.100:3000/` (where you replace by your actual IP address)
+6. Confirm and now it appears on your computer, magic!
