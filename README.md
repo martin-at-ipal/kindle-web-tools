@@ -78,6 +78,7 @@ becomes
 * My screenshots were timestamped with `+0759` timezone (and I kept wondering why the clock on my Kindle is always a minute behind) until I fixed it by setting the time manually again. **For JavaScript, the Kindle's timezone is almost always UTC.** It means that inside JS, you can never deduce in which timezone you are! The offset is determined when the user sets the time and it seems only a hidden setting. (It would be possible to get the offset from screenshots though - as we can work with iframes, load a content of file:///mnt/us and parse it, find filenames matching the screenshot pattern and _voilà_.)
 * `Date()` shows the correct date with the right timezone offset however, using `new Date()` ruins it. To reset, Home button and starting Web browser does the trick and `Date()` works again. WEIRD
 * I found no way to turn the backlight _completely_ off.
+* Kindle does not provide Copy and Paste functionalities (an implementation is possible through `localstorage`)
 
 
 ## Vocabulary
